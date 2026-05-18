@@ -1,0 +1,37 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug active module",
+      "type": "cortex-debug",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "servertype": "openocd",
+      "interface": "swd",
+      "serverpath": "@AT32_OPENOCD_BINARY@",
+      "searchDir": [
+        "@AT32_OPENOCD_SCRIPTS_DIR@",
+        "${workspaceFolder}/openocd"
+      ],
+      "device": "AT32F413CCU7",
+      "runToEntryPoint": "main",
+      "gdbPath": "arm-none-eabi-gdb",
+      "executable": "${workspaceFolder}/build/debug/artifacts/${input:module}/${input:module}.elf",
+      "svdFile": "@AT32_SVD_FILE@",
+      "configFiles": [
+        "interface/stlink.cfg",
+        "at32f413ccu7.cfg"
+      ],
+      "preLaunchTask": "CMake: build module"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "module",
+      "type": "pickString",
+      "description": "Firmware module",
+      "options": [
+@AT32_VSCODE_MODULE_OPTIONS@      ]
+    }
+  ]
+}

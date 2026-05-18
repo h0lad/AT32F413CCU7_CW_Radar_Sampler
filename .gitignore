@@ -1,0 +1,13 @@
+build/
+.vscode/
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.elf
+*.hex
+*.bin
+*.map
+*.a
+*.o
+compile_commands.json

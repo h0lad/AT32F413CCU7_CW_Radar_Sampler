@@ -1,0 +1,10 @@
+{
+  "cmake.useCMakePresets": "always",
+  "cmake.configureOnOpen": false,
+  "cmake.defaultConfigurePreset": "debug",
+  "cmake.defaultBuildPreset": "debug",
+  "cortex-debug.openocdPath": "@AT32_OPENOCD_BINARY@",
+  "files.associations": {
+    "at32f413_conf.h": "c"
+  }
+}

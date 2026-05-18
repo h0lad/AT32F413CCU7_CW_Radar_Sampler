@@ -1,0 +1,51 @@
+name: Build Firmware
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+    branches: ["main", "master"]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    strategy:
+      matrix:
+        preset: [debug, release]
+
+    name: Build (${{ matrix.preset }})
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Init firmware library submodule
+        run: git submodule update --init drivers/AT32F413_Firmware_Library
+
+      - name: Install ARM toolchain
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            gcc-arm-none-eabi \
+            binutils-arm-none-eabi \
+            libnewlib-arm-none-eabi \
+            cmake \
+            make
+
+      - name: Configure (${{ matrix.preset }})
+        run: cmake --preset ${{ matrix.preset }}
+
+      - name: Build all modules (${{ matrix.preset }})
+        run: cmake --build --preset ${{ matrix.preset }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-${{ matrix.preset }}
+          path: |
+            build/${{ matrix.preset }}/artifacts/**/*.elf
+            build/${{ matrix.preset }}/artifacts/**/*.hex
+            build/${{ matrix.preset }}/artifacts/**/*.bin
+            build/${{ matrix.preset }}/artifacts/**/*.map
+          retention-days: 30

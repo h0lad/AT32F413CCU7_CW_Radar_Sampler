@@ -1,0 +1,7 @@
+[submodule "drivers/AT32F413_Firmware_Library"]
+	path = drivers/AT32F413_Firmware_Library
+	url = https://github.com/ArteryTek/AT32F413_Firmware_Library.git
+
+[submodule "drivers/openocd"]
+	path = drivers/openocd
+	url = https://github.com/ArteryTek/openocd.git

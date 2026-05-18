@@ -1,0 +1,101 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "CMake: configure debug",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--preset",
+        "debug"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "CMake: build module",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "--preset",
+        "debug",
+        "--target",
+        "${input:module}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOn": "CMake: configure debug",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "OpenOCD: flash module",
+      "type": "shell",
+      "command": "${workspaceFolder}/tools/run-openocd.sh",
+      "args": [
+        "program",
+        "${workspaceFolder}/build/debug/artifacts/${input:module}/${input:module}.elf",
+        "verify",
+        "reset",
+        "exit"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOn": "CMake: build module",
+      "problemMatcher": []
+    },
+    {
+      "label": "OpenOCD: build local",
+      "type": "shell",
+      "command": "${workspaceFolder}/tools/build-openocd.sh",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Monitor: serial",
+      "type": "shell",
+      "command": "${workspaceFolder}/tools/serial-monitor.sh",
+      "args": [
+        "${input:monitorPort}",
+        "${input:monitorBaud}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "module",
+      "type": "pickString",
+      "description": "Firmware module",
+      "options": [
+@AT32_VSCODE_MODULE_OPTIONS@      ]
+    },
+    {
+      "id": "monitorPort",
+      "type": "promptString",
+      "description": "Serial monitor device",
+      "default": "/dev/ttyACM0"
+    },
+    {
+      "id": "monitorBaud",
+      "type": "promptString",
+      "description": "Serial baud rate",
+      "default": "115200"
+    }
+  ]
+}
