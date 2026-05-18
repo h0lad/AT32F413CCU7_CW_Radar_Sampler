@@ -13,6 +13,8 @@ With my FTDI FT2232HL board I usually stick around 0 CRC errors.
 
 On [my website](https://www.holad.de/2026/04/26/fun-in-space-an-cw-radars/) you can find a few experiments I did with this thing.
 
+This PCB doesn't give you DAC access to the VCO input of the Radar IC. So no FMCW here.
+
 ## Dependencies
 
 ```
