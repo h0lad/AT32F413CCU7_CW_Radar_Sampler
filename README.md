@@ -1,6 +1,6 @@
 # AT32F413CCU7 Radar Firmware
 
-This is an alternative firmware for cheap CW Radar boards from Aliexpress that are based on the Artery AT32F413CCU7 microcontroller.
+This is an alternative firmware for [cheap CW Radar boards from Aliexpress](http://de.aliexpress.com/item/1005010388578617.html) that are based on the Artery AT32F413CCU7 microcontroller.
 
 Features:
  - 6MBaud UART
