@@ -1,6 +1,6 @@
 # AT32F413CCU7 Radar Firmware
 
-This is an alternative firmware for [cheap CW Radar boards from Aliexpress](http://de.aliexpress.com/item/1005010388578617.html) that are based on the Artery AT32F413CCU7 microcontroller.
+This is an alternative firmware for [cheap CW Radar boards from Aliexpress](http://de.aliexpress.com/item/1005010388578617.html) that are based on a Artery AT32F413CCU7 microcontroller.
 
 Features:
  - 6MBaud UART
@@ -10,6 +10,8 @@ Features:
  - Python script for recording and visualizing the signals
 
 With my FTDI FT2232HL board I usually stick around 0 CRC errors.
+
+On [my website](https://www.holad.de/2026/04/26/fun-in-space-an-cw-radars/) you can find a few experiments I did with this thing.
 
 ## Dependencies
 
