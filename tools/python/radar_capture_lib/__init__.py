@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
+from .analyzer import AnalysisSnapshot, DetectedTarget, SpeedEstimator
 from .core import (
     ADC_CENTER,
     CrcCorrector,
@@ -16,15 +17,20 @@ from .core import (
     timestamp_for_filename,
     update_telemetry_for_frame,
 )
+from .fft_analyzer import RadarAnalyzer
 from .app import main
 
 __all__ = [
     "ADC_CENTER",
+    "AnalysisSnapshot",
     "CrcCorrector",
+    "DetectedTarget",
     "FRAME_FORMAT_IQ_U16_LE",
     "FrameParser",
+    "RadarAnalyzer",
     "RadarFrame",
     "RadarRecorder",
+    "SpeedEstimator",
     "Telemetry",
     "TelemetryPrinter",
     "decode_frame",

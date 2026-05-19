@@ -8,6 +8,7 @@ from collections import deque
 from pathlib import Path
 from typing import Deque, Dict, List, Optional
 
+from .analyzer import AnalysisSnapshot
 from .core import (
     DOPPLER_HZ_TO_KMH,
     FFT_DBM_DISPLAY_MAX_DBM,
@@ -19,14 +20,13 @@ from .core import (
     SPECTROGRAM_TOP_DB,
     WATERFALL_COMPRESSION_TAU_DB,
     WATERFALL_DISPLAY_TOP_DB,
-    AnalysisSnapshot,
-    RadarAnalyzer,
     Telemetry,
     format_duration,
     frame_to_centered_iq,
     frames_to_centered_iq,
     timestamp_for_filename,
 )
+from .fft_analyzer import RadarAnalyzer
 
 STATUS_REFRESH_S = 0.5
 
