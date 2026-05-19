@@ -64,26 +64,26 @@ at32_add_module(<name>
 Install Python dependencies:
 
 ```
-pip install -r tools/requirements.txt
+pip install -r tools/python/requirements.txt
 ```
 
 Capture and record:
 
 ```
-python3 tools/radar_capture.py /dev/ttyUSB0 --baud 6000000 \
+python3 tools/python/radar_capture.py /dev/ttyUSB0 --baud 6000000 \
   --record-dir recordings --rotate-size 512M --keep-files 8
 ```
 
 Live UI:
 
 ```
-python3 tools/radar_capture.py /dev/ttyUSB0 --baud 6000000 --ui
+python3 tools/python/radar_capture.py /dev/ttyUSB0 --baud 6000000 --ui
 ```
 
 Headless (no plots):
 
 ```
-python3 tools/radar_capture.py /dev/ttyUSB0 --baud 6000000 --no-visual
+python3 tools/python/radar_capture.py /dev/ttyUSB0 --baud 6000000 --no-visual
 ```
 
 Recording files land in `recordings/` as `<prefix>_<timestamp>_<n>.iq16le` with a sidecar `.json`.
